@@ -3,17 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zulal Senel - Portfolio & Parcours</title>
+    <title>Zulal Senel - Portfolio Ingénieure</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #4f46e5;
             --secondary: #06b6d4;
-            --bg-color: #0f172a;
+            --accent: #f59e0b;
+            --bg-color: #0b1120;
             --card-bg: #1e293b;
             --text-color: #f8fafc;
             --text-muted: #94a3b8;
         }
+
+        * { box-sizing: border-box; }
 
         body {
             font-family: 'Poppins', sans-serif;
@@ -21,61 +24,122 @@
             color: var(--text-color);
             margin: 0;
             padding: 0;
-            overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
-        header {
+        /* Page de garde / Hero */
+        .hero {
             text-align: center;
-            padding: 60px 20px;
-            background: linear-gradient(135deg, #1e1b4b, #0f172a);
-            border-bottom: 1px solid #334155;
+            padding: 50px 20px 30px;
+            background: radial-gradient(circle at top, #1e1b4b 0%, var(--bg-color) 70%);
         }
 
-        header h1 {
-            font-size: 2.8rem;
-            margin-bottom: 10px;
+        .profile-pic {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--secondary);
+            box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
+            margin-bottom: 15px;
+            background-color: #334155;
+        }
+
+        .hero h1 {
+            font-size: 2.6rem;
+            margin: 0;
             background: linear-gradient(to right, #818cf8, #38bdf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
-        header p {
-            font-size: 1.2rem;
+        .hero .subtitle {
             color: var(--text-muted);
-            max-width: 600px;
-            margin: 0 auto;
+            font-size: 1.05rem;
+            max-width: 650px;
+            margin: 10px auto 25px;
         }
 
-        .contact-info {
-            margin-top: 20px;
+        /* Barre de navigation / Onglets */
+        .nav-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 30px;
+            padding: 0 15px;
+        }
+
+        .nav-btn {
+            background: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid #334155;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-family: inherit;
+            font-weight: 600;
             font-size: 0.95rem;
-            color: var(--secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
         }
 
-        .container {
+        .nav-btn:hover, .nav-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-color: transparent;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
+        }
+
+        .nav-btn.linkedin {
+            background: #0a66c2;
+            border-color: #0a66c2;
+        }
+        .nav-btn.linkedin:hover {
+            background: #004182;
+        }
+
+        /* Contenu des onglets */
+        .tab-content {
+            display: none;
             max-width: 900px;
-            margin: 50px auto;
+            width: 100%;
+            margin: 0 auto 60px;
             padding: 0 20px;
-            position: relative;
+            animation: fadeIn 0.4s ease;
         }
 
-        h2.section-title {
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Timeline cliquable */
+        .timeline-hint {
             text-align: center;
-            font-size: 2rem;
-            margin-bottom: 40px;
-            color: #fff;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 25px;
         }
 
-        /* Timeline / Chemin interactif */
         .timeline {
             position: relative;
-            padding-left: 40px;
+            padding-left: 35px;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            left: 15px;
+            left: 12px;
             top: 0;
             height: 100%;
             width: 4px;
@@ -85,189 +149,571 @@
 
         .timeline-item {
             position: relative;
-            margin-bottom: 35px;
+            margin-bottom: 20px;
             background: var(--card-bg);
-            padding: 20px 25px;
+            padding: 18px 22px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
             border: 1px solid #334155;
-            transition: transform 0.3s ease;
+            cursor: pointer;
+            transition: all 0.25s ease;
         }
 
         .timeline-item:hover {
-            transform: translateX(5px);
-            border-color: var(--primary);
+            border-color: var(--secondary);
+            transform: translateX(4px);
         }
 
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -33px;
-            top: 20px;
-            width: 16px;
-            height: 16px;
+            left: -30px;
+            top: 22px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: var(--secondary);
             border: 3px solid var(--bg-color);
         }
 
+        .timeline-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
         .timeline-item .date {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             font-weight: 600;
             color: var(--secondary);
             text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 5px;
         }
 
         .timeline-item h3 {
-            margin: 0 0 10px 0;
-            font-size: 1.3rem;
-            color: #fff;
+            margin: 4px 0 0;
+            font-size: 1.15rem;
         }
 
-        .timeline-item p {
-            margin: 0;
+        .toggle-icon {
+            font-size: 1.2rem;
             color: var(--text-muted);
-            font-size: 0.95rem;
-            line-height: 1.5;
+            transition: transform 0.3s;
         }
 
-        /* Mini-Jeu Section */
-        .game-section {
+        .timeline-item.open .toggle-icon {
+            transform: rotate(180deg);
+            color: var(--secondary);
+        }
+
+        .timeline-details {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #334155;
+            color: #cbd5e1;
+            font-size: 0.92rem;
+            line-height: 1.6;
+        }
+
+        .timeline-item.open .timeline-details {
+            display: block;
+        }
+
+        .timeline-details ul {
+            margin: 5px 0 0;
+            padding-left: 20px;
+        }
+
+        .timeline-details li {
+            margin-bottom: 6px;
+        }
+
+        /* Section Contact */
+        .contact-card {
             background: var(--card-bg);
-            border: 2px dashed var(--primary);
-            border-radius: 15px;
-            padding: 30px;
-            margin: 60px 0;
+            border-radius: 16px;
+            padding: 35px;
+            border: 1px solid #334155;
             text-align: center;
+            max-width: 600px;
+            margin: 20px auto;
         }
 
-        .game-section h3 {
-            color: #38bdf8;
+        .contact-item {
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 10px;
+            margin: 15px 0;
+            font-size: 1.05rem;
+            border: 1px solid #334155;
+        }
+
+        .contact-item a {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* Section Jeux & Quiz */
+        .games-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .game-card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid #334155;
+        }
+
+        .game-card h3 {
             margin-top: 0;
+            color: var(--secondary);
+            font-size: 1.4rem;
         }
 
-        .quiz-box {
-            margin-top: 20px;
+        /* Quiz */
+        .quiz-option {
+            display: block;
+            width: 100%;
+            text-align: left;
+            background: #0f172a;
+            color: var(--text-color);
+            border: 1px solid #334155;
+            padding: 12px 16px;
+            margin: 8px 0;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+            transition: 0.2s;
         }
 
-        .quiz-btn {
-            background-color: var(--primary);
+        .quiz-option:hover {
+            border-color: var(--primary);
+            background: #1e1b4b;
+        }
+
+        .btn-action {
+            background: var(--primary);
             color: white;
             border: none;
             padding: 10px 20px;
-            margin: 5px;
             border-radius: 8px;
+            font-weight: 600;
             cursor: pointer;
-            font-weight: 600;
-            transition: background 0.2s;
+            margin-top: 10px;
         }
 
-        .quiz-btn:hover {
-            background-color: #4338ca;
+        .leaderboard {
+            margin-top: 25px;
+            background: #0f172a;
+            padding: 15px;
+            border-radius: 10px;
         }
 
-        #quiz-result {
-            margin-top: 15px;
-            font-weight: 600;
-            color: #34d399;
+        .leaderboard table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+        .leaderboard th, .leaderboard td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #1e293b;
+            font-size: 0.9rem;
+        }
+
+        /* Puzzle Taquin 3x3 */
+        .puzzle-board {
+            display: grid;
+            grid-template-columns: repeat(3, 85px);
+            grid-template-rows: repeat(3, 85px);
+            gap: 6px;
+            justify-content: center;
+            margin: 20px auto;
+        }
+
+        .puzzle-tile {
+            background: linear-gradient(135deg, var(--primary), #312e81);
+            color: white;
+            font-size: 1.4rem;
+            font-weight: 700;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-radius: 10px;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid #6366f1;
+        }
+
+        .puzzle-tile span {
+            font-size: 0.65rem;
+            font-weight: 400;
+            color: #cbd5e1;
+        }
+
+        .puzzle-tile.empty {
+            background: #0f172a;
+            border: 1px dashed #334155;
+            cursor: default;
         }
 
         footer {
+            margin-top: auto;
             text-align: center;
-            padding: 40px;
+            padding: 25px;
             color: var(--text-muted);
             font-size: 0.85rem;
-            border-top: 1px solid #334155;
+            border-top: 1px solid #1e293b;
         }
     </style>
 </head>
 <body>
 
-    <header>
+    <!-- PAGE DE GARDE / EN-TÊTE -->
+    <div class="hero">
+        <!-- Remplace le lien src ci-dessous par le nom de ta photo uploadée sur GitHub (ex: photo.jpg) -->
+        <img src="https://ui-avatars.com/api/?name=Zulal+Senel&background=06b6d4&color=fff&size=200" alt="Zulal Senel" class="profile-pic">
         <h1>Zulal Senel</h1>
-        <p>Étudiante ingénieure en Génie Mécanique à Centrale Lyon (Enise)[cite: 9] | Passionnée par la conception, l'aéronautique et l'innovation.</p>
-        <div class="contact-info">
-            🎯 Recherche de stage (10/05 au 02/07/2027) & Alternance (2027-2028)[cite: 9] | senelzulal@icloud.com[cite: 9]
+        <p class="subtitle">Étudiante à Centrale Lyon Enise (Génie Mécanique) • Recherche de stage (10/05/27 au 02/07/27) & d'alternance (2027-2028)</p>
+
+        <div class="nav-buttons">
+            <button class="nav-btn active" onclick="openTab('parcours', this)">🚀 Parcours Académique & Pro</button>
+            <button class="nav-btn" onclick="openTab('jeux', this)">🎮 Jeux & Quiz Scientifique</button>
+            <button class="nav-btn" onclick="openTab('contact', this)">📬 Contact</button>
+            <a href="https://www.linkedin.com/in/zulal-senel-30b118345" target="_blank" class="nav-btn linkedin">💼 LinkedIn</a>
         </div>
-    </header>
+    </div>
 
-    <div class="container">
-        <h2 class="section-title">🚀 Mon Chemin de Vie & Parcours</h2>
-
+    <!-- ONGLET 1 : PARCOURS -->
+    <div id="parcours" class="tab-content active">
+        <p class="timeline-hint">💡 Cliquez sur une étape du chemin pour afficher tous les détails !</p>
+        
         <div class="timeline">
-            <div class="timeline-item">
-                <div class="date">2026 - 2030</div>
-                <h3>Centrale Lyon Enise (Campus Saint-Étienne)[cite: 9]</h3>
-                <p>Cycle préparatoire intégré en génie mécanique[cite: 9]. Focus sur la conception, la production mécanique et le développement technique sur le terrain.</p>
+            <!-- Centrale Lyon -->
+            <div class="timeline-item open" onclick="toggleStep(this)">
+                <div class="timeline-header">
+                    <div>
+                        <div class="date">2026 - 2030</div>
+                        <h3>Centrale Lyon (ENISE - Campus de Saint-Étienne)</h3>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="timeline-details">
+                    <ul>
+                        <li><strong>Cycle préparatoire intégré en Génie Mécanique</strong> (actuellement en 2ᵉ année).</li>
+                        <li>Passionnée par la conception et la production mécanique.</li>
+                        <li>Objectif : intégrer une entreprise pour le stage de S3 (10/05/2027 au 02/07/2027) avec perspective d'alternance en 2027-2028.</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="date">2024 - Présent (Projet TIPE)</div>
-                <h3>Conception d'un Radar pour Avions & Furtivité</h3>
-                <p>Création et conception d'un radar aéronautique innovant en étudiant de près l'évolution des technologies de furtivité militaire.</p>
+            <!-- Projet TIPE -->
+            <div class="timeline-item" onclick="toggleStep(this)">
+                <div class="timeline-header">
+                    <div>
+                        <div class="date">Projet Scientifique (TIPE)</div>
+                        <h3>Conception d'un Radar Aéronautique & Technologie de Furtivité</h3>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="timeline-details">
+                    <ul>
+                        <li>Étude et conception d'un système radar pour avions face à l'évolution rapide des technologies de furtivité.</li>
+                        <li>Analyse physique des ondes électromagnétiques, de la détection et des matériaux absorbants.</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="date">2025 - 2026</div>
-                <h3>CPGE - Lycée Alphonse Daudet (PCSI)[cite: 9]</h3>
-                <p>8e de la promotion au premier semestre et 10e au second[cite: 9]. Rigueur scientifique et esprit analytique poussé.</p>
+            <!-- CPGE -->
+            <div class="timeline-item" onclick="toggleStep(this)">
+                <div class="timeline-header">
+                    <div>
+                        <div class="date">2025 - 2026</div>
+                        <h3>CPGE PCSI - Lycée Alphonse Daudet</h3>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="timeline-details">
+                    <ul>
+                        <li>Classe préparatoire Physique, Chimie et Sciences de l'Ingénieur (PCSI).</li>
+                        <li><strong>Classement :</strong> 8ᵉ de la promotion au premier semestre et 10ᵉ au second semestre.</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="date">2024</div>
-                <h3>Stage en Aérospatial - Turkish Aerospace Industries (TAI)[cite: 9]</h3>
-                <p>Maîtrise des outils d'amélioration continue, gestion de projets industriels et collaboration internationale sur le terrain[cite: 9].</p>
+            <!-- Université PASS -->
+            <div class="timeline-item" onclick="toggleStep(this)">
+                <div class="timeline-header">
+                    <div>
+                        <div class="date">2024 - 2025</div>
+                        <h3>Université : Première année de médecine (PASS) - Mineure PCSI</h3>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="timeline-details">
+                    <ul>
+                        <li>Parcours d'Accès Spécifique Santé (PASS) avec <strong>mineure PCSI (mineure ingénieur)</strong>.</li>
+                        <li>Participation au concours de médecine en 2025.</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="date">2024 - 2025</div>
-                <h3>Première année de médecine (PASS - mineure ingénieur)[cite: 9]</h3>
-                <p>Acquisition d'une grande rigueur de travail, d'une capacité d'apprentissage intense et d'un esprit analytique fort.</p>
+            <!-- Stage TAI -->
+            <div class="timeline-item" onclick="toggleStep(this)">
+                <div class="timeline-header">
+                    <div>
+                        <div class="date">2024 • Expérience Professionnelle</div>
+                        <h3>Stage en Aérospatial - Turkish Aerospace Industries (TAI)</h3>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="timeline-details">
+                    <ul>
+                        <li>Maîtrise des outils d'amélioration continue en milieu industriel aéronautique.</li>
+                        <li>Gestion de projets industriels.</li>
+                        <li>Collaboration avec les équipes de terrain ainsi qu'à l'international.</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="date">2021 - 2024</div>
-                <h3>Lycée René Char & Distinctions[cite: 9]</h3>
-                <p>Baccalauréat avec Mention Très Bien[cite: 9], note de 20/20 au Grand Oral[cite: 9], niveau B2 en Anglais (Cambridge)[cite: 9], et 1er prix au concours de la Fête de la Science 2022[cite: 9].</p>
+            <!-- Lycée René Char -->
+            <div class="timeline-item" onclick="toggleStep(this)">
+                <div class="timeline-header">
+                    <div>
+                        <div class="date">2021 - 2024</div>
+                        <h3>Lycée René Char</h3>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="timeline-details">
+                    <ul>
+                        <li><strong>Baccalauréat Mention Très Bien</strong> avec la note de <strong>20/20 au Grand Oral</strong>.</li>
+                        <li><strong>Spécialités :</strong> SVT (1ʳᵉ de l'école) et Physique-Chimie (1ʳᵉ de classe de spécialité).</li>
+                        <li><strong>Option Mathématiques complémentaires :</strong> 1ʳᵉ de classe et 20 de moyenne en fin de Terminale.</li>
+                        <li><strong>Classe Européenne :</strong> cours de physique-chimie et histoire-géographie en anglais (certification niveau B2 de l'Université de Cambridge + certification Espagnol niveau B1).</li>
+                        <li><strong>Distinction (2022) :</strong> 1ʳᵉ place au concours de la Fête de la Science.</li>
+                    </ul>
+                </div>
             </div>
 
-            <div class="timeline-item">
-                <div class="date">Collège (5e & 3e)</div>
-                <h3>Premiers engagements & Talents</h3>
-                <p>Médiatrice scolaire en 5e (résolution de conflits entre élèves) • Action solidaire avec la Banque Alimentaire et création de fiches en 3e • 2e place à un concours national de lettres.</p>
+            <!-- Collège -->
+            <div class="timeline-item" onclick="toggleStep(this)">
+                <div class="timeline-header">
+                    <div>
+                        <div class="date">2017 - 2021</div>
+                        <h3>Collège Jules Verne & Engagements</h3>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="timeline-details">
+                    <ul>
+                        <li><strong>Brevet des collèges :</strong> Mention Très Bien (Option Latin et Grec antique suivie pendant 3 ans).</li>
+                        <li><strong>Stage de 3ᵉ (2021) :</strong> Découverte du monde professionnel chez Chausséa.</li>
+                        <li><strong>Engagement Citoyen (3ᵉ) :</strong> Participation aux récoltes de la Banque Alimentaire et création de fiches de sensibilisation distribuées aux classes et au collège.</li>
+                        <li><strong>Concours d'écriture :</strong> 2ᵉ place remportée lors d'un concours de lettres.</li>
+                        <li><strong>Médiation (5ᵉ) :</strong> Rôle de médiatrice scolaire pour aider les élèves à dialoguer et résoudre leurs conflits.</li>
+                    </ul>
+                </div>
             </div>
         </div>
+    </div>
 
-        <!-- Mini-Jeu / Quiz Interactif -->
-        <div class="game-section">
-            <h3>🎮 Le Mini-Quiz de Zulal</h3>
-            <p>Teste tes connaissances sur mes projets ! Quelle technologie est au cœur de mon projet TIPE ?</p>
-            <div class="quiz-box">
-                <button class="quiz-btn" onclick="checkAnswer(false)">Un moteur quantique</button>
-                <button class="quiz-btn" onclick="checkAnswer(true)">Un radar pour avions furtifs</button>
-                <button class="quiz-btn" onclick="checkAnswer(false)">Un robot cuisinier</button>
-                <div id="quiz-result"></div>
+    <!-- ONGLET 2 : JEUX & QUIZ -->
+    <div id="jeux" class="tab-content">
+        <div class="games-grid">
+            <!-- Quiz Scientifique -->
+            <div class="game-card">
+                <h3>🧠 Défi Scientifique & Ingénierie (10 Questions)</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Testez vos connaissances en physique, mécanique et aéronautique, puis inscrivez votre score dans le classement !</p>
+                
+                <div id="quiz-container"></div>
+
+                <div class="leaderboard">
+                    <strong>🏆 Tableau des Meilleurs Scores (Compétition)</strong>
+                    <table>
+                        <thead>
+                            <tr><th>Rang</th><th>Joueur</th><th>Score</th></tr>
+                        </thead>
+                        <tbody id="leaderboard-body"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Mini-Jeu Puzzle -->
+            <div class="game-card" style="text-align: center;">
+                <h3>🧩 Puzzle Mécanique & Ingénierie</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Remettez les étapes de conception d'un projet ENISE dans l'ordre (1 à 8) en cliquant sur les cases adjacentes au vide !</p>
+                <div class="puzzle-board" id="puzzle-board"></div>
+                <p id="puzzle-status" style="color: var(--secondary); font-weight: 600;"></p>
+                <button class="btn-action" onclick="initPuzzle()">Mélanger le puzzle</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ONGLET 3 : CONTACT -->
+    <div id="contact" class="tab-content">
+        <div class="contact-card">
+            <h2 style="margin-top:0; color: var(--secondary);">Me Contacter</h2>
+            <p style="color: var(--text-muted);">N'hésitez pas à me joindre pour toute proposition de stage (mai-juillet 2027) ou d'alternance (2027-2028).</p>
+            
+            <div class="contact-item">
+                📞 Téléphone : <a href="tel:0666987545">06 66 98 75 45</a>
+            </div>
+            <div class="contact-item">
+                ✉️ Email : <a href="mailto:senelzulal@icloud.com">senelzulal@icloud.com</a>
+            </div>
+            <div class="contact-item">
+                💼 LinkedIn : <a href="https://www.linkedin.com/in/zulal-senel-30b118345" target="_blank">Profil LinkedIn de Zulal Senel</a>
             </div>
         </div>
     </div>
 
     <footer>
-        <p>© 2026 - Zulal Senel | Portfolio hébergé sur GitHub Pages</p>
+        © 2026 Zulal Senel • Portfolio interactif hébergé sur GitHub Pages
     </footer>
 
     <script>
-        function checkAnswer(isCorrect) {
-            const resultDiv = document.getElementById('quiz-result');
-            if (isCorrect) {
-                resultDiv.style.color = "#34d399";
-                resultDiv.innerHTML = "🎉 Bravo ! C'est exact, un radar aéronautique face à la technologie de furtivité.";
+        // Gestion des onglets
+        function openTab(tabId, btn) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            btn.classList.add('active');
+        }
+
+        // Déplier/replier les étapes du parcours
+        function toggleStep(element) {
+            element.classList.toggle('open');
+        }
+
+        // --- QUIZ SCIENTIFIQUE 10 QUESTIONS ---
+        const questions = [
+            { q: "1. Quel principe physique permet à un avion furtif d'éviter les radars ?", options: ["La diffraction sonore", "L'absorption et la déviation des ondes électromagnétiques", "La poussée d'Archimède"], answer: 1 },
+            { q: "2. Quelle est l'unité de mesure de la contrainte mécanique dans le Système International ?", options: ["Le Pascal (Pa)", "Le Newton (N)", "Le Joule (J)"], answer: 0 },
+            { q: "3. Quelle célèbre école d'ingénieurs est spécialisée dans le génie mécanique à Saint-Étienne ?", options: ["Centrale Lyon - ENISE", "HEC Paris", "École du Louvre"], answer: 0 },
+            { q: "4. En aéronautique, que signifie le sigle 'SER' lié à la furtivité ?", options: ["Système Électrique Rapide", "Surface Équivalente Radar", "Sonde d'Énergie Réactive"], answer: 1 },
+            { q: "5. Quelle loi fondamentale relie la force, la masse et l'accélération (F = m·a) ?", options: ["La 1ère loi de Kepler", "La 2ème loi de Newton", "La loi d'Ohm"], answer: 1 },
+            { q: "6. Quel matériau composite est très utilisé en aérospatial pour sa légèreté et sa résistance ?", options: ["La fonte grise", "La fibre de carbone", "Le plomb"], answer: 1 },
+            { q: "7. À quelle vitesse approximative se propagent les ondes radar dans l'air ?", options: ["340 m/s", "300 000 km/s", "1 200 km/h"], answer: 1 },
+            { q: "8. En amélioration continue industrielle (Lean), que signifie '5S' ?", options: ["Une méthode d'organisation et d'efficacité des postes de travail", "5 semaines de vacances", "Un alliage d'acier"], answer: 0 },
+            { q: "9. Quel phénomène explique le décalage de fréquence d'une onde radar réfléchie par un avion en mouvement ?", options: ["L'effet Doppler", "L'effet photoélectrique", "L'effet Venturi"], answer: 0 },
+            { q: "10. Quelle grandeur mesure la résistance d'un matériau à la déformation élastique ?", options: ["Le module de Young", "La viscosité cinématique", "L'indice de réfraction"], answer: 0 }
+        ];
+
+        let currentQ = 0;
+        let score = 0;
+
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            if (currentQ < questions.length) {
+                const q = questions[currentQ];
+                let html = `<p><strong>${q.q}</strong></p>`;
+                q.options.forEach((opt, index) => {
+                    html += `<button class="quiz-option" onclick="answerQuiz(${index})">${opt}</button>`;
+                });
+                html += `<p style="font-size:0.85rem; color:var(--text-muted);">Question ${currentQ + 1} sur ${questions.length} | Score actuel : ${score}</p>`;
+                container.innerHTML = html;
             } else {
-                resultDiv.style.color = "#f87171";
-                resultDiv.innerHTML = "❌ Oups, ce n'est pas ça ! Indice : regarde l'étape de mon projet TIPE 😉.";
+                container.innerHTML = `
+                    <div style="padding:15px; background:#0f172a; border-radius:10px; text-align:center;">
+                        <h4 style="color:#34d399; margin:0 0 10px;">🎉 Quiz terminé ! Votre score : ${score} / ${questions.length}</h4>
+                        <input type="text" id="player-name" placeholder="Votre prénom ou pseudo" style="padding:8px; border-radius:6px; border:1px solid #334155; background:#1e293b; color:white;">
+                        <button class="btn-action" onclick="saveScore()">Enregistrer mon score</button>
+                        <br><button class="btn-action" style="background:#475569;" onclick="restartQuiz()">Rejouer</button>
+                    </div>
+                `;
             }
         }
+
+        function answerQuiz(selected) {
+            if (selected === questions[currentQ].answer) score++;
+            currentQ++;
+            renderQuiz();
+        }
+
+        function restartQuiz() {
+            currentQ = 0;
+            score = 0;
+            renderQuiz();
+        }
+
+        function saveScore() {
+            const nameInput = document.getElementById('player-name').value.trim() || "Anonyme";
+            let scores = JSON.parse(localStorage.getItem('zulal_quiz_scores')) || [
+                { name: "Zulal (Créatrice)", score: 10 },
+                { name: "Ingénieur ENISE", score: 8 }
+            ];
+            scores.push({ name: nameInput, score: score });
+            scores.sort((a, b) => b.score - a.score);
+            scores = scores.slice(0, 7);
+            localStorage.setItem('zulal_quiz_scores', JSON.stringify(scores));
+            renderLeaderboard();
+            document.getElementById('player-name').disabled = true;
+        }
+
+        function renderLeaderboard() {
+            const scores = JSON.parse(localStorage.getItem('zulal_quiz_scores')) || [
+                { name: "Zulal (Créatrice)", score: 10 },
+                { name: "Ingénieur ENISE", score: 8 }
+            ];
+            const tbody = document.getElementById('leaderboard-body');
+            tbody.innerHTML = scores.map((s, i) => `<tr><td>#${i + 1}</td><td>${s.name}</td><td><strong>${s.score}/10</strong></td></tr>`).join('');
+        }
+
+        // --- MINI-JEU PUZZLE TAQUIN ---
+        const labels = ["", "CAO", "Méca", "Radar", "TAI", "PCSI", "ENISE", "S3", "2027"];
+        let tiles = [1, 2, 3, 4, 5, 6, 7, 8, 0];
+
+        function initPuzzle() {
+            tiles = [1, 2, 3, 4, 5, 6, 7, 8, 0];
+            // Mélange valide par mouvements aléatoires
+            for (let i = 0; i < 60; i++) {
+                const emptyIdx = tiles.indexOf(0);
+                const neighbors = getNeighbors(emptyIdx);
+                const rand = neighbors[Math.floor(Math.random() * neighbors.length)];
+                [tiles[emptyIdx], tiles[rand]] = [tiles[rand], tiles[emptyIdx]];
+            }
+            document.getElementById('puzzle-status').innerText = "";
+            drawPuzzle();
+        }
+
+        function getNeighbors(idx) {
+            const neighbors = [];
+            if (idx % 3 > 0) neighbors.push(idx - 1);
+            if (idx % 3 < 2) neighbors.push(idx + 1);
+            if (idx >= 3) neighbors.push(idx - 3);
+            if (idx < 6) neighbors.push(idx + 3);
+            return neighbors;
+        }
+
+        function moveTile(idx) {
+            const emptyIdx = tiles.indexOf(0);
+            if (getNeighbors(emptyIdx).includes(idx)) {
+                [tiles[emptyIdx], tiles[idx]] = [tiles[idx], tiles[emptyIdx]];
+                drawPuzzle();
+                if (tiles.join(',') === '1,2,3,4,5,6,7,8,0') {
+                    document.getElementById('puzzle-status').innerText = "🎉 Félicitations ! Puzzle ENISE reconstitué !";
+                }
+            }
+        }
+
+        function drawPuzzle() {
+            const board = document.getElementById('puzzle-board');
+            board.innerHTML = tiles.map((val, idx) => {
+                if (val === 0) return `<div class="puzzle-tile empty"></div>`;
+                return `<div class="puzzle-tile" onclick="moveTile(${idx})">${val}<span>${labels[val]}</span></div>`;
+            }).join('');
+        }
+
+        // Initialisation au chargement
+        renderQuiz();
+        renderLeaderboard();
+        initPuzzle();
     </script>
 </body>
 </html>
