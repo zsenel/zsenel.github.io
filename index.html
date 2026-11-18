@@ -4,22 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zulal Senel - Portfolio Ingénieure</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #4f46e5;
+            --primary: #6366f1;
             --secondary: #06b6d4;
-            --accent: #f59e0b;
-            --bg-color: #0b1120;
-            --card-bg: #1e293b;
-            --text-color: #f8fafc;
+            --accent: #f43f5e;
+            --bg-color: #090d16;
+            --card-bg: #131d31;
+            --card-border: #1e293b;
+            --text-color: #f1f5f9;
             --text-muted: #94a3b8;
         }
 
         * { box-sizing: border-box; }
 
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-color);
             margin: 0;
@@ -29,60 +30,65 @@
             flex-direction: column;
         }
 
-        /* Page de garde / Hero */
         .hero {
             text-align: center;
-            padding: 50px 20px 30px;
-            background: radial-gradient(circle at top, #1e1b4b 0%, var(--bg-color) 70%);
+            padding: 60px 20px 35px;
+            background: radial-gradient(circle at 50% 0%, #1e1b4b 0%, var(--bg-color) 70%);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .profile-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 20px;
         }
 
         .profile-pic {
-            width: 140px;
-            height: 140px;
+            width: 100%;
+            height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid var(--secondary);
-            box-shadow: 0 0 25px rgba(6, 182, 212, 0.4);
-            margin-bottom: 15px;
-            background-color: #334155;
+            border: 3px solid var(--secondary);
+            box-shadow: 0 0 30px rgba(6, 182, 212, 0.3);
+            background-color: #1e293b;
         }
 
         .hero h1 {
-            font-size: 2.6rem;
+            font-size: 2.5rem;
             margin: 0;
-            background: linear-gradient(to right, #818cf8, #38bdf8);
+            background: linear-gradient(135deg, #818cf8, #38bdf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero .subtitle {
             color: var(--text-muted);
-            font-size: 1.05rem;
+            font-size: 1rem;
             max-width: 650px;
             margin: 10px auto 25px;
+            line-height: 1.5;
         }
 
-        /* Barre de navigation / Onglets */
         .nav-buttons {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 12px;
-            margin-bottom: 30px;
             padding: 0 15px;
         }
 
         .nav-btn {
             background: var(--card-bg);
             color: var(--text-color);
-            border: 1px solid #334155;
-            padding: 12px 22px;
-            border-radius: 30px;
+            border: 1px solid var(--card-border);
+            padding: 10px 22px;
+            border-radius: 25px;
             font-family: inherit;
             font-weight: 600;
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: all 0.25s ease;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -93,7 +99,7 @@
             background: linear-gradient(135deg, var(--primary), var(--secondary));
             border-color: transparent;
             transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
+            box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4);
         }
 
         .nav-btn.linkedin {
@@ -104,12 +110,11 @@
             background: #004182;
         }
 
-        /* Contenu des onglets */
         .tab-content {
             display: none;
             max-width: 900px;
             width: 100%;
-            margin: 0 auto 60px;
+            margin: 40px auto;
             padding: 0 20px;
             animation: fadeIn 0.4s ease;
         }
@@ -123,12 +128,12 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Timeline cliquable */
         .timeline-hint {
             text-align: center;
             color: var(--secondary);
             font-size: 0.9rem;
             margin-bottom: 25px;
+            font-weight: 500;
         }
 
         .timeline {
@@ -142,7 +147,7 @@
             left: 12px;
             top: 0;
             height: 100%;
-            width: 4px;
+            width: 3px;
             background: linear-gradient(to bottom, var(--primary), var(--secondary));
             border-radius: 2px;
         }
@@ -151,28 +156,17 @@
             position: relative;
             margin-bottom: 20px;
             background: var(--card-bg);
-            padding: 18px 22px;
-            border-radius: 12px;
-            border: 1px solid #334155;
+            padding: 20px;
+            border-radius: 14px;
+            border: 1px solid var(--card-border);
             cursor: pointer;
-            transition: all 0.25s ease;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         .timeline-item:hover {
             border-color: var(--secondary);
             transform: translateX(4px);
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -30px;
-            top: 22px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--secondary);
-            border: 3px solid var(--bg-color);
         }
 
         .timeline-header {
@@ -186,15 +180,17 @@
             font-weight: 600;
             color: var(--secondary);
             text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
 
         .timeline-item h3 {
             margin: 4px 0 0;
             font-size: 1.15rem;
+            color: #fff;
         }
 
         .toggle-icon {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--text-muted);
             transition: transform 0.3s;
         }
@@ -208,8 +204,8 @@
             display: none;
             margin-top: 15px;
             padding-top: 15px;
-            border-top: 1px solid #334155;
-            color: #cbd5e1;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
             font-size: 0.92rem;
             line-height: 1.6;
         }
@@ -227,24 +223,25 @@
             margin-bottom: 6px;
         }
 
-        /* Section Contact */
+        /* Contact Box */
         .contact-card {
             background: var(--card-bg);
             border-radius: 16px;
-            padding: 35px;
-            border: 1px solid #334155;
+            padding: 40px 30px;
+            border: 1px solid var(--card-border);
             text-align: center;
             max-width: 600px;
             margin: 20px auto;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
         }
 
         .contact-item {
-            background: #0f172a;
-            padding: 15px;
-            border-radius: 10px;
+            background: var(--bg-color);
+            padding: 16px;
+            border-radius: 12px;
             margin: 15px 0;
             font-size: 1.05rem;
-            border: 1px solid #334155;
+            border: 1px solid var(--card-border);
         }
 
         .contact-item a {
@@ -253,7 +250,7 @@
             font-weight: 600;
         }
 
-        /* Section Jeux & Quiz */
+        /* Jeux Grid */
         .games-grid {
             display: grid;
             grid-template-columns: 1fr;
@@ -264,29 +261,30 @@
             background: var(--card-bg);
             border-radius: 16px;
             padding: 25px;
-            border: 1px solid #334155;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
         }
 
         .game-card h3 {
             margin-top: 0;
             color: var(--secondary);
-            font-size: 1.4rem;
+            font-size: 1.3rem;
         }
 
-        /* Quiz */
         .quiz-option {
             display: block;
             width: 100%;
             text-align: left;
-            background: #0f172a;
+            background: var(--bg-color);
             color: var(--text-color);
-            border: 1px solid #334155;
+            border: 1px solid var(--card-border);
             padding: 12px 16px;
             margin: 8px 0;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             font-family: inherit;
             transition: 0.2s;
+            font-size: 0.95rem;
         }
 
         .quiz-option:hover {
@@ -303,13 +301,16 @@
             font-weight: 600;
             cursor: pointer;
             margin-top: 10px;
+            transition: 0.2s;
         }
+        .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
 
         .leaderboard {
             margin-top: 25px;
-            background: #0f172a;
+            background: var(--bg-color);
             padding: 15px;
-            border-radius: 10px;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
         }
 
         .leaderboard table {
@@ -321,11 +322,11 @@
         .leaderboard th, .leaderboard td {
             padding: 8px;
             text-align: left;
-            border-bottom: 1px solid #1e293b;
+            border-bottom: 1px solid var(--card-border);
             font-size: 0.9rem;
         }
 
-        /* Puzzle Taquin 3x3 */
+        /* Puzzle Propre (sans chiffres) */
         .puzzle-board {
             display: grid;
             grid-template-columns: repeat(3, 85px);
@@ -338,52 +339,53 @@
         .puzzle-tile {
             background: linear-gradient(135deg, var(--primary), #312e81);
             color: white;
-            font-size: 1.4rem;
-            font-weight: 700;
+            font-size: 0.9rem;
+            font-weight: 600;
             display: flex;
-            flex-direction: column;
             align-items: center;
             justify-content: center;
+            text-align: center;
+            padding: 5px;
             border-radius: 10px;
             cursor: pointer;
             user-select: none;
-            border: 1px solid #6366f1;
+            border: 1px solid #818cf8;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            transition: 0.15s;
         }
-
-        .puzzle-tile span {
-            font-size: 0.65rem;
-            font-weight: 400;
-            color: #cbd5e1;
-        }
+        .puzzle-tile:hover { filter: brightness(1.1); }
 
         .puzzle-tile.empty {
-            background: #0f172a;
-            border: 1px dashed #334155;
+            background: var(--bg-color);
+            border: 1px dashed var(--card-border);
             cursor: default;
+            box-shadow: none;
         }
 
         footer {
             margin-top: auto;
             text-align: center;
-            padding: 25px;
+            padding: 30px;
             color: var(--text-muted);
             font-size: 0.85rem;
-            border-top: 1px solid #1e293b;
+            border-top: 1px solid var(--card-border);
+            background: #060911;
         }
     </style>
 </head>
 <body>
 
-    <!-- PAGE DE GARDE / EN-TÊTE -->
     <div class="hero">
-        <!-- Remplace le lien src ci-dessous par le nom de ta photo uploadée sur GitHub (ex: photo.jpg) -->
-        <img src="https://ui-avatars.com/api/?name=Zulal+Senel&background=06b6d4&color=fff&size=200" alt="Zulal Senel" class="profile-pic">
+        <div class="profile-container">
+            <!-- Astuce photo : Mets ton image dans ton dossier GitHub et remplace "photo.jpg" par son vrai nom -->
+            <img src="photo.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Zulal+Senel&background=06b6d4&color=fff&size=200'" alt="Zulal Senel" class="profile-pic">
+        </div>
         <h1>Zulal Senel</h1>
         <p class="subtitle">Étudiante à Centrale Lyon Enise (Génie Mécanique) • Recherche de stage (10/05/27 au 02/07/27) & d'alternance (2027-2028)</p>
 
         <div class="nav-buttons">
             <button class="nav-btn active" onclick="openTab('parcours', this)">🚀 Parcours Académique & Pro</button>
-            <button class="nav-btn" onclick="openTab('jeux', this)">🎮 Jeux & Quiz Scientifique</button>
+            <button class="nav-btn" onclick="openTab('jeux', this)">🎮 Jeux & Quiz</button>
             <button class="nav-btn" onclick="openTab('contact', this)">📬 Contact</button>
             <a href="https://www.linkedin.com/in/zulal-senel-30b118345" target="_blank" class="nav-btn linkedin">💼 LinkedIn</a>
         </div>
@@ -391,7 +393,7 @@
 
     <!-- ONGLET 1 : PARCOURS -->
     <div id="parcours" class="tab-content active">
-        <p class="timeline-hint">💡 Cliquez sur une étape du chemin pour afficher tous les détails !</p>
+        <p class="timeline-hint">💡 Cliquez sur une étape pour découvrir tous les détails de mon parcours.</p>
         
         <div class="timeline">
             <!-- Centrale Lyon -->
@@ -405,9 +407,9 @@
                 </div>
                 <div class="timeline-details">
                     <ul>
-                        <li><strong>Cycle préparatoire intégré en Génie Mécanique</strong> (actuellement en 2ᵉ année).</li>
+                        <li><strong>Cycle préparatoire intégré en Génie Mécanique</strong> (2ème année).</li>
                         <li>Passionnée par la conception et la production mécanique.</li>
-                        <li>Objectif : intégrer une entreprise pour le stage de S3 (10/05/2027 au 02/07/2027) avec perspective d'alternance en 2027-2028.</li>
+                        <li>Recherche active de stage de S3 (du 10/05/2027 au 02/07/2027) et alternance pour 2027-2028.</li>
                     </ul>
                 </div>
             </div>
@@ -417,14 +419,14 @@
                 <div class="timeline-header">
                     <div>
                         <div class="date">Projet Scientifique (TIPE)</div>
-                        <h3>Conception d'un Radar Aéronautique & Technologie de Furtivité</h3>
+                        <h3>Conception d'un Radar Aéronautique & Furtivité</h3>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="timeline-details">
                     <ul>
-                        <li>Étude et conception d'un système radar pour avions face à l'évolution rapide des technologies de furtivité.</li>
-                        <li>Analyse physique des ondes électromagnétiques, de la détection et des matériaux absorbants.</li>
+                        <li>Conception d'un système radar pour avions face aux avancées des technologies de furtivité.</li>
+                        <li>Étude analytique et expérimentale des ondes et des matériaux absorbants.</li>
                     </ul>
                 </div>
             </div>
@@ -441,7 +443,7 @@
                 <div class="timeline-details">
                     <ul>
                         <li>Classe préparatoire Physique, Chimie et Sciences de l'Ingénieur (PCSI).</li>
-                        <li><strong>Classement :</strong> 8ᵉ de la promotion au premier semestre et 10ᵉ au second semestre.</li>
+                        <li><strong>Classement :</strong> 8ème de la promo au premier semestre et 10ème au second.</li>
                     </ul>
                 </div>
             </div>
@@ -457,7 +459,7 @@
                 </div>
                 <div class="timeline-details">
                     <ul>
-                        <li>Parcours d'Accès Spécifique Santé (PASS) avec <strong>mineure PCSI (mineure ingénieur)</strong>.</li>
+                        <li>Parcours d'Accès Spécifique Santé (PASS) avec mineure ingénieur (PCSI).</li>
                         <li>Participation au concours de médecine en 2025.</li>
                     </ul>
                 </div>
@@ -467,16 +469,32 @@
             <div class="timeline-item" onclick="toggleStep(this)">
                 <div class="timeline-header">
                     <div>
-                        <div class="date">2024 • Expérience Professionnelle</div>
+                        <div class="date">2024 • Expérience Pro</div>
                         <h3>Stage en Aérospatial - Turkish Aerospace Industries (TAI)</h3>
                     </div>
                     <span class="toggle-icon">▼</span>
                 </div>
                 <div class="timeline-details">
                     <ul>
-                        <li>Maîtrise des outils d'amélioration continue en milieu industriel aéronautique.</li>
-                        <li>Gestion de projets industriels.</li>
-                        <li>Collaboration avec les équipes de terrain ainsi qu'à l'international.</li>
+                        <li>Maîtrise des outils d'amélioration continue en milieu industriel.</li>
+                        <li>Gestion de projets industriels et collaboration avec les équipes terrain et à l'international.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Prix & Concours -->
+            <div class="timeline-item" onclick="toggleStep(this)">
+                <div class="timeline-header">
+                    <div>
+                        <div class="date">Distinctions & Concours</div>
+                        <h3>Prix et Récompenses</h3>
+                    </div>
+                    <span class="toggle-icon">▼</span>
+                </div>
+                <div class="timeline-details">
+                    <ul>
+                        <li><strong>2022 :</strong> 1ère place au concours de la Fête de la Science.</li>
+                        <li><strong>Concours de Lettres :</strong> 2ème place remportée lors d'un concours d'écriture de lettres.</li>
                     </ul>
                 </div>
             </div>
@@ -493,10 +511,16 @@
                 <div class="timeline-details">
                     <ul>
                         <li><strong>Baccalauréat Mention Très Bien</strong> avec la note de <strong>20/20 au Grand Oral</strong>.</li>
-                        <li><strong>Spécialités :</strong> SVT (1ʳᵉ de l'école) et Physique-Chimie (1ʳᵉ de classe de spécialité).</li>
-                        <li><strong>Option Mathématiques complémentaires :</strong> 1ʳᵉ de classe et 20 de moyenne en fin de Terminale.</li>
-                        <li><strong>Classe Européenne :</strong> cours de physique-chimie et histoire-géographie en anglais (certification niveau B2 de l'Université de Cambridge + certification Espagnol niveau B1).</li>
-                        <li><strong>Distinction (2022) :</strong> 1ʳᵉ place au concours de la Fête de la Science.</li>
+                        <li><strong>Spécialités :</strong> SVT (1ère de l'école) et Physique-Chimie (1ère de classe).</li>
+                        <li><strong>Mathématiques complémentaires :</strong> 1ère de classe et 20 de moyenne en fin de Terminale.</li>
+                        <li><strong>Langues & Options :</strong>
+                            <ul style="margin-top:4px;">
+                                <li>Français (natif).</li>
+                                <li>Anglais : Classe européenne (cours de physique-chimie et histoire-géo en anglais) + niveau B2 certifié par l'Université de Cambridge.</li>
+                                <li>Espagnol : Niveau B1 certifié par le Lycée René Char.</li>
+                                <li>Option Latin et grec antique choisie au collège pendant 3 ans.</li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -512,11 +536,10 @@
                 </div>
                 <div class="timeline-details">
                     <ul>
-                        <li><strong>Brevet des collèges :</strong> Mention Très Bien (Option Latin et Grec antique suivie pendant 3 ans).</li>
-                        <li><strong>Stage de 3ᵉ (2021) :</strong> Découverte du monde professionnel chez Chausséa.</li>
-                        <li><strong>Engagement Citoyen (3ᵉ) :</strong> Participation aux récoltes de la Banque Alimentaire et création de fiches de sensibilisation distribuées aux classes et au collège.</li>
-                        <li><strong>Concours d'écriture :</strong> 2ᵉ place remportée lors d'un concours de lettres.</li>
-                        <li><strong>Médiation (5ᵉ) :</strong> Rôle de médiatrice scolaire pour aider les élèves à dialoguer et résoudre leurs conflits.</li>
+                        <li>Brevet des collèges obtenu avec Mention Très Bien.</li>
+                        <li><strong>Stage de 3ème (2021) :</strong> Immersion professionnelle chez Chausséa.</li>
+                        <li><strong>Médiation (5ème) :</strong> Rôle de médiatrice pour faire dialoguer les élèves et résoudre leurs conflits.</li>
+                        <li><strong>Action Solidaire (3ème) :</strong> Participation aux récoltes de la Banque Alimentaire et création de fiches de sensibilisation distribuées en classe et au collège.</li>
                     </ul>
                 </div>
             </div>
@@ -526,15 +549,15 @@
     <!-- ONGLET 2 : JEUX & QUIZ -->
     <div id="jeux" class="tab-content">
         <div class="games-grid">
-            <!-- Quiz Scientifique -->
+            <!-- Quiz Scientifique 10 questions -->
             <div class="game-card">
-                <h3>🧠 Défi Scientifique & Ingénierie (10 Questions)</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Testez vos connaissances en physique, mécanique et aéronautique, puis inscrivez votre score dans le classement !</p>
+                <h3>🧠 Grand Quiz Scientifique & Ingénierie (10 Questions)</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Testez vos connaissances et tentez d'inscrire votre score au classement général !</p>
                 
                 <div id="quiz-container"></div>
 
                 <div class="leaderboard">
-                    <strong>🏆 Tableau des Meilleurs Scores (Compétition)</strong>
+                    <strong>🏆 Tableau des Scores (Compétition)</strong>
                     <table>
                         <thead>
                             <tr><th>Rang</th><th>Joueur</th><th>Score</th></tr>
@@ -544,12 +567,12 @@
                 </div>
             </div>
 
-            <!-- Mini-Jeu Puzzle -->
+            <!-- Puzzle Repensé -->
             <div class="game-card" style="text-align: center;">
-                <h3>🧩 Puzzle Mécanique & Ingénierie</h3>
-                <p style="color: var(--text-muted); font-size: 0.9rem;">Remettez les étapes de conception d'un projet ENISE dans l'ordre (1 à 8) en cliquant sur les cases adjacentes au vide !</p>
+                <h3>🧩 Puzzle Technique ENISE</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem;">Reconstituez le puzzle thématique en faisant glisser les blocs adjacents vers la case vide !</p>
                 <div class="puzzle-board" id="puzzle-board"></div>
-                <p id="puzzle-status" style="color: var(--secondary); font-weight: 600;"></p>
+                <p id="puzzle-status" style="color: var(--secondary); font-weight: 600; min-height: 24px;"></p>
                 <button class="btn-action" onclick="initPuzzle()">Mélanger le puzzle</button>
             </div>
         </div>
@@ -558,8 +581,8 @@
     <!-- ONGLET 3 : CONTACT -->
     <div id="contact" class="tab-content">
         <div class="contact-card">
-            <h2 style="margin-top:0; color: var(--secondary);">Me Contacter</h2>
-            <p style="color: var(--text-muted);">N'hésitez pas à me joindre pour toute proposition de stage (mai-juillet 2027) ou d'alternance (2027-2028).</p>
+            <h2 style="margin-top:0; color: var(--secondary);">Informations de Contact</h2>
+            <p style="color: var(--text-muted);">Ouverte aux opportunités de stage et d'alternance.</p>
             
             <div class="contact-item">
                 📞 Téléphone : <a href="tel:0666987545">06 66 98 75 45</a>
@@ -578,7 +601,6 @@
     </footer>
 
     <script>
-        // Gestion des onglets
         function openTab(tabId, btn) {
             document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
@@ -586,23 +608,22 @@
             btn.classList.add('active');
         }
 
-        // Déplier/replier les étapes du parcours
         function toggleStep(element) {
             element.classList.toggle('open');
         }
 
-        // --- QUIZ SCIENTIFIQUE 10 QUESTIONS ---
+        // --- QUIZ 10 QUESTIONS ---
         const questions = [
-            { q: "1. Quel principe physique permet à un avion furtif d'éviter les radars ?", options: ["La diffraction sonore", "L'absorption et la déviation des ondes électromagnétiques", "La poussée d'Archimède"], answer: 1 },
-            { q: "2. Quelle est l'unité de mesure de la contrainte mécanique dans le Système International ?", options: ["Le Pascal (Pa)", "Le Newton (N)", "Le Joule (J)"], answer: 0 },
-            { q: "3. Quelle célèbre école d'ingénieurs est spécialisée dans le génie mécanique à Saint-Étienne ?", options: ["Centrale Lyon - ENISE", "HEC Paris", "École du Louvre"], answer: 0 },
-            { q: "4. En aéronautique, que signifie le sigle 'SER' lié à la furtivité ?", options: ["Système Électrique Rapide", "Surface Équivalente Radar", "Sonde d'Énergie Réactive"], answer: 1 },
-            { q: "5. Quelle loi fondamentale relie la force, la masse et l'accélération (F = m·a) ?", options: ["La 1ère loi de Kepler", "La 2ème loi de Newton", "La loi d'Ohm"], answer: 1 },
-            { q: "6. Quel matériau composite est très utilisé en aérospatial pour sa légèreté et sa résistance ?", options: ["La fonte grise", "La fibre de carbone", "Le plomb"], answer: 1 },
-            { q: "7. À quelle vitesse approximative se propagent les ondes radar dans l'air ?", options: ["340 m/s", "300 000 km/s", "1 200 km/h"], answer: 1 },
-            { q: "8. En amélioration continue industrielle (Lean), que signifie '5S' ?", options: ["Une méthode d'organisation et d'efficacité des postes de travail", "5 semaines de vacances", "Un alliage d'acier"], answer: 0 },
-            { q: "9. Quel phénomène explique le décalage de fréquence d'une onde radar réfléchie par un avion en mouvement ?", options: ["L'effet Doppler", "L'effet photoélectrique", "L'effet Venturi"], answer: 0 },
-            { q: "10. Quelle grandeur mesure la résistance d'un matériau à la déformation élastique ?", options: ["Le module de Young", "La viscosité cinématique", "L'indice de réfraction"], answer: 0 }
+            { q: "1. Quel principe physique permet à un avion furtif de réduire sa détection radar ?", options: ["La réfraction lumineuse", "L'absorption et la déviation des ondes électromagnétiques", "La détente adiabatique"], answer: 1 },
+            { q: "2. Quelle unité mesure la contrainte mécanique dans le Système International ?", options: ["Le Pascal (Pa)", "Le Newton (N)", "Le Joule (J)"], answer: 0 },
+            { q: "3. Quelle école d'ingénieurs intègre le campus de Saint-Étienne en génie mécanique ?", options: ["Centrale Lyon - ENISE", "Ponts ParisTech", "ISAE-SUPAERO"], answer: 0 },
+            { q: "4. Que désigne l'acronyme 'SER' en aéronautique militaire ?", options: ["Surface Équivalente Radar", "Système Électronique Rapide", "Signal Électromagnétique Réfracté"], answer: 1 },
+            { q: "5. Quelle loi physique exprime que F = m·a ?", options: ["La 2ème loi de Newton", "La loi d'Ohm", "Le principe de Pascal"], answer: 0 },
+            { q: "6. Quel matériau composite est privilégié en aérospatial pour son rapport poids/rigidité ?", options: ["La fibre de carbone", "L'acier inoxydable", "Le bronze"], answer: 0 },
+            { q: "7. Quelle est la vitesse de propagation des ondes électromagnétiques dans le vide ?", options: ["340 m/s", "300 000 km/s", "3 000 km/h"], answer: 1 },
+            { q: "8. En management de production (Lean), à quoi sert la méthode 5S ?", options: ["À optimiser l'organisation et la propreté des postes de travail", "À calculer la résistance des matériaux", "À souder l'aluminium"], answer: 0 },
+            { q: "9. Quel effet physique explique le changement de fréquence d'une onde réfléchie par un objet en mouvement ?", options: ["L'effet Doppler", "L'effet Venturi", "L'effet Peltier"], answer: 0 },
+            { q: "10. Comment nomme-t-on le module qui caractérise l'élasticité linéaire d'un matériau solide ?", options: ["Le module de Young", "Le coefficient de Poisson", "La limite d'élasticité"], answer: 0 }
         ];
 
         let currentQ = 0;
@@ -612,19 +633,19 @@
             const container = document.getElementById('quiz-container');
             if (currentQ < questions.length) {
                 const q = questions[currentQ];
-                let html = `<p><strong>${q.q}</strong></p>`;
+                let html = `<p style="font-weight:600; margin-top:15px;">${q.q}</p>`;
                 q.options.forEach((opt, index) => {
                     html += `<button class="quiz-option" onclick="answerQuiz(${index})">${opt}</button>`;
                 });
-                html += `<p style="font-size:0.85rem; color:var(--text-muted);">Question ${currentQ + 1} sur ${questions.length} | Score actuel : ${score}</p>`;
+                html += `<p style="font-size:0.85rem; color:var(--text-muted); margin-top:15px;">Question ${currentQ + 1} / ${questions.length} | Score : ${score}</p>`;
                 container.innerHTML = html;
             } else {
                 container.innerHTML = `
-                    <div style="padding:15px; background:#0f172a; border-radius:10px; text-align:center;">
-                        <h4 style="color:#34d399; margin:0 0 10px;">🎉 Quiz terminé ! Votre score : ${score} / ${questions.length}</h4>
-                        <input type="text" id="player-name" placeholder="Votre prénom ou pseudo" style="padding:8px; border-radius:6px; border:1px solid #334155; background:#1e293b; color:white;">
-                        <button class="btn-action" onclick="saveScore()">Enregistrer mon score</button>
-                        <br><button class="btn-action" style="background:#475569;" onclick="restartQuiz()">Rejouer</button>
+                    <div style="padding:20px; background:var(--bg-color); border-radius:12px; text-align:center; border:1px solid var(--card-border);">
+                        <h4 style="color:#34d399; margin-top:0;">🎉 Quiz terminé ! Score : ${score} / ${questions.length}</h4>
+                        <input type="text" id="player-name" placeholder="Votre prénom / pseudo" style="padding:10px; border-radius:8px; border:1px solid var(--card-border); background:var(--card-bg); color:white; width:80%; max-width:250px; margin-bottom:10px;"><br>
+                        <button class="btn-action" onclick="saveScore()">Enregistrer mon score</button><br>
+                        <button class="btn-action" style="background:#334155; margin-top:8px;" onclick="restartQuiz()">Rejouer</button>
                     </div>
                 `;
             }
@@ -646,11 +667,11 @@
             const nameInput = document.getElementById('player-name').value.trim() || "Anonyme";
             let scores = JSON.parse(localStorage.getItem('zulal_quiz_scores')) || [
                 { name: "Zulal (Créatrice)", score: 10 },
-                { name: "Ingénieur ENISE", score: 8 }
+                { name: "Ingénieur ENISE", score: 9 }
             ];
             scores.push({ name: nameInput, score: score });
             scores.sort((a, b) => b.score - a.score);
-            scores = scores.slice(0, 7);
+            scores = scores.slice(0, 5);
             localStorage.setItem('zulal_quiz_scores', JSON.stringify(scores));
             renderLeaderboard();
             document.getElementById('player-name').disabled = true;
@@ -659,20 +680,19 @@
         function renderLeaderboard() {
             const scores = JSON.parse(localStorage.getItem('zulal_quiz_scores')) || [
                 { name: "Zulal (Créatrice)", score: 10 },
-                { name: "Ingénieur ENISE", score: 8 }
+                { name: "Ingénieur ENISE", score: 9 }
             ];
             const tbody = document.getElementById('leaderboard-body');
             tbody.innerHTML = scores.map((s, i) => `<tr><td>#${i + 1}</td><td>${s.name}</td><td><strong>${s.score}/10</strong></td></tr>`).join('');
         }
 
-        // --- MINI-JEU PUZZLE TAQUIN ---
-        const labels = ["", "CAO", "Méca", "Radar", "TAI", "PCSI", "ENISE", "S3", "2027"];
+        // --- PUZZLE PROPRE (SANS CHIFFRES) ---
+        const puzzleTexts = ["", "Conception", "Mécanique", "Radar", "Stage TAI", "PCSI", "ENISE", "Projet S3", "Innovation"];
         let tiles = [1, 2, 3, 4, 5, 6, 7, 8, 0];
 
         function initPuzzle() {
             tiles = [1, 2, 3, 4, 5, 6, 7, 8, 0];
-            // Mélange valide par mouvements aléatoires
-            for (let i = 0; i < 60; i++) {
+            for (let i = 0; i < 50; i++) {
                 const emptyIdx = tiles.indexOf(0);
                 const neighbors = getNeighbors(emptyIdx);
                 const rand = neighbors[Math.floor(Math.random() * neighbors.length)];
@@ -697,7 +717,7 @@
                 [tiles[emptyIdx], tiles[idx]] = [tiles[idx], tiles[emptyIdx]];
                 drawPuzzle();
                 if (tiles.join(',') === '1,2,3,4,5,6,7,8,0') {
-                    document.getElementById('puzzle-status').innerText = "🎉 Félicitations ! Puzzle ENISE reconstitué !";
+                    document.getElementById('puzzle-status').innerText = "🎉 Bravo ! Puzzle reconstitué avec succès !";
                 }
             }
         }
@@ -706,11 +726,10 @@
             const board = document.getElementById('puzzle-board');
             board.innerHTML = tiles.map((val, idx) => {
                 if (val === 0) return `<div class="puzzle-tile empty"></div>`;
-                return `<div class="puzzle-tile" onclick="moveTile(${idx})">${val}<span>${labels[val]}</span></div>`;
+                return `<div class="puzzle-tile" onclick="moveTile(${idx})">${puzzleTexts[val]}</div>`;
             }).join('');
         }
 
-        // Initialisation au chargement
         renderQuiz();
         renderLeaderboard();
         initPuzzle();
