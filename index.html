@@ -2,10 +2,272 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Mon Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zulal Senel - Portfolio & Parcours</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --secondary: #06b6d4;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-color: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(135deg, #1e1b4b, #0f172a);
+            border-bottom: 1px solid #334155;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #818cf8, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: var(--secondary);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 50px auto;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        h2.section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 40px;
+            color: #fff;
+        }
+
+        /* Timeline / Chemin interactif */
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            height: 100%;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 35px;
+            background: var(--card-bg);
+            padding: 20px 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 1px solid #334155;
+            transition: transform 0.3s ease;
+        }
+
+        .timeline-item:hover {
+            transform: translateX(5px);
+            border-color: var(--primary);
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -33px;
+            top: 20px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--secondary);
+            border: 3px solid var(--bg-color);
+        }
+
+        .timeline-item .date {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--secondary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .timeline-item h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.3rem;
+            color: #fff;
+        }
+
+        .timeline-item p {
+            margin: 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Mini-Jeu Section */
+        .game-section {
+            background: var(--card-bg);
+            border: 2px dashed var(--primary);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 60px 0;
+            text-align: center;
+        }
+
+        .game-section h3 {
+            color: #38bdf8;
+            margin-top: 0;
+        }
+
+        .quiz-box {
+            margin-top: 20px;
+        }
+
+        .quiz-btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.2s;
+        }
+
+        .quiz-btn:hover {
+            background-color: #4338ca;
+        }
+
+        #quiz-result {
+            margin-top: 15px;
+            font-weight: 600;
+            color: #34d399;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            border-top: 1px solid #334155;
+        }
+    </style>
 </head>
 <body>
-    <h1>Bienvenue sur mon portfolio !</h1>
-    <p>Je m'appelle Zulal Senel et c'est mon tout premier site sur GitHub.</p>
+
+    <header>
+        <h1>Zulal Senel</h1>
+        <p>Étudiante ingénieure en Génie Mécanique à Centrale Lyon (Enise)[cite: 9] | Passionnée par la conception, l'aéronautique et l'innovation.</p>
+        <div class="contact-info">
+            🎯 Recherche de stage (10/05 au 02/07/2027) & Alternance (2027-2028)[cite: 9] | senelzulal@icloud.com[cite: 9]
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">🚀 Mon Chemin de Vie & Parcours</h2>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="date">2026 - 2030</div>
+                <h3>Centrale Lyon Enise (Campus Saint-Étienne)[cite: 9]</h3>
+                <p>Cycle préparatoire intégré en génie mécanique[cite: 9]. Focus sur la conception, la production mécanique et le développement technique sur le terrain.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">2024 - Présent (Projet TIPE)</div>
+                <h3>Conception d'un Radar pour Avions & Furtivité</h3>
+                <p>Création et conception d'un radar aéronautique innovant en étudiant de près l'évolution des technologies de furtivité militaire.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">2025 - 2026</div>
+                <h3>CPGE - Lycée Alphonse Daudet (PCSI)[cite: 9]</h3>
+                <p>8e de la promotion au premier semestre et 10e au second[cite: 9]. Rigueur scientifique et esprit analytique poussé.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">2024</div>
+                <h3>Stage en Aérospatial - Turkish Aerospace Industries (TAI)[cite: 9]</h3>
+                <p>Maîtrise des outils d'amélioration continue, gestion de projets industriels et collaboration internationale sur le terrain[cite: 9].</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">2024 - 2025</div>
+                <h3>Première année de médecine (PASS - mineure ingénieur)[cite: 9]</h3>
+                <p>Acquisition d'une grande rigueur de travail, d'une capacité d'apprentissage intense et d'un esprit analytique fort.</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">2021 - 2024</div>
+                <h3>Lycée René Char & Distinctions[cite: 9]</h3>
+                <p>Baccalauréat avec Mention Très Bien[cite: 9], note de 20/20 au Grand Oral[cite: 9], niveau B2 en Anglais (Cambridge)[cite: 9], et 1er prix au concours de la Fête de la Science 2022[cite: 9].</p>
+            </div>
+
+            <div class="timeline-item">
+                <div class="date">Collège (5e & 3e)</div>
+                <h3>Premiers engagements & Talents</h3>
+                <p>Médiatrice scolaire en 5e (résolution de conflits entre élèves) • Action solidaire avec la Banque Alimentaire et création de fiches en 3e • 2e place à un concours national de lettres.</p>
+            </div>
+        </div>
+
+        <!-- Mini-Jeu / Quiz Interactif -->
+        <div class="game-section">
+            <h3>🎮 Le Mini-Quiz de Zulal</h3>
+            <p>Teste tes connaissances sur mes projets ! Quelle technologie est au cœur de mon projet TIPE ?</p>
+            <div class="quiz-box">
+                <button class="quiz-btn" onclick="checkAnswer(false)">Un moteur quantique</button>
+                <button class="quiz-btn" onclick="checkAnswer(true)">Un radar pour avions furtifs</button>
+                <button class="quiz-btn" onclick="checkAnswer(false)">Un robot cuisinier</button>
+                <div id="quiz-result"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 - Zulal Senel | Portfolio hébergé sur GitHub Pages</p>
+    </footer>
+
+    <script>
+        function checkAnswer(isCorrect) {
+            const resultDiv = document.getElementById('quiz-result');
+            if (isCorrect) {
+                resultDiv.style.color = "#34d399";
+                resultDiv.innerHTML = "🎉 Bravo ! C'est exact, un radar aéronautique face à la technologie de furtivité.";
+            } else {
+                resultDiv.style.color = "#f87171";
+                resultDiv.innerHTML = "❌ Oups, ce n'est pas ça ! Indice : regarde l'étape de mon projet TIPE 😉.";
+            }
+        }
+    </script>
 </body>
 </html>
