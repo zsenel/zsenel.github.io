@@ -4,15 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zulal Senel - Portfolio Ingénieure</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #2563eb;
-            --secondary: #06b6d4;
-            --accent: #f59e0b;
-            --bg-color: #0b1329;
-            --card-bg: #111c38;
-            --card-border: #1e293b;
+            --primary: #38bdf8;
+            --secondary: #818cf8;
+            --accent: #f43f5e;
+            --bg-color: #030712;
+            --card-bg: rgba(15, 23, 42, 0.75);
+            --card-border: rgba(56, 189, 248, 0.2);
             --text-color: #f8fafc;
             --text-muted: #94a3b8;
         }
@@ -30,31 +30,35 @@
             flex-direction: column;
             position: relative;
             overflow-x: hidden;
+            /* Dégradé subtil de bleu plus foncé sur les bords latéraux */
+            background-image: 
+                linear-gradient(90deg, rgba(2, 6, 23, 0.95) 0%, transparent 15%, transparent 85%, rgba(2, 6, 23, 0.95) 100%),
+                radial-gradient(circle at 50% 0%, #0f172a 0%, #030712 60%);
         }
 
-        /* Éléments graphiques aéronautiques sur les bords (Fusées / Traînées) */
-        .side-decor {
+        /* Illustrations vectorielles aéronautiques et spatiales sur les bords */
+        .aero-decor {
             position: absolute;
             top: 0;
-            width: 120px;
+            width: 140px;
             height: 100%;
             pointer-events: none;
-            opacity: 0.15;
+            opacity: 0.25;
             z-index: 0;
-            background-repeat: repeat-y;
         }
-        .side-decor.left {
+        .aero-decor.left {
             left: 0;
-            background-image: linear-gradient(to right, rgba(6, 182, 212, 0.4), transparent), 
-                              radial-gradient(circle at 20px 150px, var(--secondary) 3px, transparent 4px);
+            background: linear-gradient(180deg, transparent 5%, rgba(56, 189, 248, 0.3) 30%, transparent 70%),
+                        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'%3E%3Cpath d='M21 16v-2l-8-5V3.5c0-.83-.67-1.5-1.5-1.5S10 2.67 10 3.5V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5l8 2.5z'/%3E%3C/svg%3E") no-repeat 40px 100px / 50px,
+                        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23818cf8'%3E%3Cpath d='M12 2.5s-4 4.5-4 8a4 4 0 1 0 8 0c0-3.5-4-8-4-8zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6z'/%3E%3C/svg%3E") no-repeat 30px 600px / 40px;
         }
-        .side-decor.right {
+        .aero-decor.right {
             right: 0;
-            background-image: linear-gradient(to left, rgba(37, 99, 235, 0.4), transparent),
-                              radial-gradient(circle at 100px 350px, var(--accent) 3px, transparent 4px);
+            background: linear-gradient(180deg, transparent 10%, rgba(129, 140, 248, 0.3) 40%, transparent 80%),
+                        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%2338bdf8'%3E%3Cpath d='M12 2.5a1 1 0 0 1 .894.553l2.5 5 5.5.8a1 1 0 0 1 .554 1.705l-4 3.9 1 5.5a1 1 0 0 1-1.45 1.054L12 18.9l-4.94 2.612a1 1 0 0 1-1.45-1.054l1-5.5-4-3.9a1 1 0 0 1 .554-1.705l5.5-.8 2.5-5A1 1 0 0 1 12 2.5z'/%3E%3C/svg%3E") no-repeat 50px 250px / 45px,
+                        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23f43f5e'%3E%3Cpath d='M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z'/%3E%3C/svg%3E") no-repeat 40px 750px / 35px;
         }
 
-        /* Contenu principal au-dessus du décor */
         .wrapper {
             position: relative;
             z-index: 1;
@@ -65,16 +69,17 @@
 
         .hero {
             text-align: center;
-            padding: 60px 20px 35px;
-            background: radial-gradient(circle at 50% 0%, #1e293b 0%, var(--bg-color) 70%);
+            padding: 50px 20px 30px;
+            background: radial-gradient(circle at 50% 0%, rgba(56, 189, 248, 0.15) 0%, transparent 70%);
             border-bottom: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
         }
 
         .profile-container {
             position: relative;
-            width: 140px;
-            height: 140px;
-            margin: 0 auto 20px;
+            width: 130px;
+            height: 130px;
+            margin: 0 auto 15px;
         }
 
         .profile-pic {
@@ -82,24 +87,25 @@
             height: 100%;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--secondary);
-            box-shadow: 0 0 30px rgba(6, 182, 212, 0.4);
-            background-color: var(--card-bg);
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.4);
+            background-color: #1e293b;
         }
 
         .hero h1 {
-            font-size: 2.6rem;
+            font-size: 2.4rem;
             margin: 0;
-            background: linear-gradient(135deg, #60a5fa, #38bdf8);
+            font-weight: 800;
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         .hero .subtitle {
             color: var(--text-muted);
-            font-size: 1rem;
+            font-size: 0.95rem;
             max-width: 650px;
-            margin: 10px auto 25px;
+            margin: 8px auto 20px;
             line-height: 1.5;
         }
 
@@ -107,7 +113,7 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             padding: 0 15px;
         }
 
@@ -115,39 +121,43 @@
             background: var(--card-bg);
             color: var(--text-color);
             border: 1px solid var(--card-border);
-            padding: 10px 22px;
-            border-radius: 25px;
+            padding: 9px 18px;
+            border-radius: 20px;
             font-family: inherit;
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.88rem;
             cursor: pointer;
             transition: all 0.25s ease;
             text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 8px;
+            gap: 6px;
+            backdrop-filter: blur(5px);
         }
 
         .nav-btn:hover, .nav-btn.active {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #030712;
             border-color: transparent;
             transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(37, 99, 235, 0.4);
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
         }
 
         .nav-btn.linkedin {
             background: #0a66c2;
+            color: white;
             border-color: #0a66c2;
         }
         .nav-btn.linkedin:hover {
             background: #004182;
+            color: white;
         }
 
         .tab-content {
             display: none;
-            max-width: 900px;
+            max-width: 850px;
             width: 100%;
-            margin: 40px auto;
+            margin: 35px auto;
             padding: 0 20px;
             animation: fadeIn 0.4s ease;
         }
@@ -157,27 +167,27 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
+            from { opacity: 0; transform: translateY(8px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
         .timeline-hint {
             text-align: center;
-            color: var(--secondary);
-            font-size: 0.9rem;
-            margin-bottom: 25px;
+            color: var(--primary);
+            font-size: 0.88rem;
+            margin-bottom: 20px;
             font-weight: 500;
         }
 
         .timeline {
             position: relative;
-            padding-left: 35px;
+            padding-left: 30px;
         }
 
         .timeline::before {
             content: '';
             position: absolute;
-            left: 12px;
+            left: 10px;
             top: 0;
             height: 100%;
             width: 3px;
@@ -187,19 +197,20 @@
 
         .timeline-item {
             position: relative;
-            margin-bottom: 20px;
+            margin-bottom: 18px;
             background: var(--card-bg);
-            padding: 20px;
-            border-radius: 14px;
+            padding: 18px;
+            border-radius: 12px;
             border: 1px solid var(--card-border);
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(8px);
         }
 
         .timeline-item:hover {
-            border-color: var(--secondary);
+            border-color: var(--primary);
             transform: translateX(4px);
+            box-shadow: 0 4px 20px rgba(56, 189, 248, 0.15);
         }
 
         .timeline-header {
@@ -209,38 +220,38 @@
         }
 
         .timeline-item .date {
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--secondary);
+            font-size: 0.78rem;
+            font-weight: 700;
+            color: var(--primary);
             text-transform: uppercase;
             letter-spacing: 0.5px;
         }
 
         .timeline-item h3 {
-            margin: 4px 0 0;
-            font-size: 1.15rem;
+            margin: 3px 0 0;
+            font-size: 1.1rem;
             color: #fff;
         }
 
         .toggle-icon {
-            font-size: 1.1rem;
+            font-size: 1rem;
             color: var(--text-muted);
             transition: transform 0.3s;
         }
 
         .timeline-item.open .toggle-icon {
             transform: rotate(180deg);
-            color: var(--secondary);
+            color: var(--primary);
         }
 
         .timeline-details {
             display: none;
-            margin-top: 15px;
-            padding-top: 15px;
+            margin-top: 12px;
+            padding-top: 12px;
             border-top: 1px solid var(--card-border);
             color: var(--text-muted);
-            font-size: 0.92rem;
-            line-height: 1.6;
+            font-size: 0.9rem;
+            line-height: 1.5;
         }
 
         .timeline-item.open .timeline-details {
@@ -248,37 +259,38 @@
         }
 
         .timeline-details ul {
-            margin: 5px 0 0;
-            padding-left: 20px;
+            margin: 4px 0 0;
+            padding-left: 18px;
         }
 
         .timeline-details li {
-            margin-bottom: 6px;
+            margin-bottom: 5px;
         }
 
         /* Contact Box */
         .contact-card {
             background: var(--card-bg);
             border-radius: 16px;
-            padding: 40px 30px;
+            padding: 35px 25px;
             border: 1px solid var(--card-border);
             text-align: center;
-            max-width: 600px;
+            max-width: 550px;
             margin: 20px auto;
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
         }
 
         .contact-item {
-            background: var(--bg-color);
-            padding: 16px;
-            border-radius: 12px;
-            margin: 15px 0;
-            font-size: 1.05rem;
+            background: rgba(3, 7, 18, 0.6);
+            padding: 14px;
+            border-radius: 10px;
+            margin: 12px 0;
+            font-size: 1rem;
             border: 1px solid var(--card-border);
         }
 
         .contact-item a {
-            color: var(--secondary);
+            color: var(--primary);
             text-decoration: none;
             font-weight: 600;
         }
@@ -287,51 +299,52 @@
         .games-grid {
             display: grid;
             grid-template-columns: 1fr;
-            gap: 30px;
+            gap: 25px;
         }
 
         .game-card {
             background: var(--card-bg);
             border-radius: 16px;
-            padding: 25px;
+            padding: 22px;
             border: 1px solid var(--card-border);
-            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
 
         .game-card h3 {
             margin-top: 0;
-            color: var(--secondary);
-            font-size: 1.3rem;
+            color: var(--primary);
+            font-size: 1.25rem;
         }
 
         .quiz-option {
             display: block;
             width: 100%;
             text-align: left;
-            background: var(--bg-color);
+            background: rgba(3, 7, 18, 0.7);
             color: var(--text-color);
             border: 1px solid var(--card-border);
-            padding: 12px 16px;
-            margin: 8px 0;
-            border-radius: 10px;
+            padding: 11px 15px;
+            margin: 7px 0;
+            border-radius: 8px;
             cursor: pointer;
             font-family: inherit;
             transition: 0.2s;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
         }
 
         .quiz-option:hover {
             border-color: var(--primary);
-            background: #1e293b;
+            background: rgba(56, 189, 248, 0.1);
         }
 
         .btn-action {
-            background: var(--primary);
-            color: white;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #030712;
             border: none;
-            padding: 10px 20px;
+            padding: 9px 18px;
             border-radius: 8px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             margin-top: 10px;
             transition: 0.2s;
@@ -339,57 +352,57 @@
         .btn-action:hover { opacity: 0.9; transform: translateY(-1px); }
 
         .leaderboard {
-            margin-top: 25px;
-            background: var(--bg-color);
-            padding: 15px;
-            border-radius: 12px;
+            margin-top: 20px;
+            background: rgba(3, 7, 18, 0.6);
+            padding: 12px;
+            border-radius: 10px;
             border: 1px solid var(--card-border);
         }
 
         .leaderboard table {
             width: 100%;
             border-collapse: collapse;
-            margin-top: 10px;
+            margin-top: 8px;
         }
 
         .leaderboard th, .leaderboard td {
-            padding: 8px;
+            padding: 6px;
             text-align: left;
             border-bottom: 1px solid var(--card-border);
-            font-size: 0.9rem;
+            font-size: 0.88rem;
         }
 
         /* Puzzle Propre */
         .puzzle-board {
             display: grid;
-            grid-template-columns: repeat(3, 85px);
-            grid-template-rows: repeat(3, 85px);
-            gap: 6px;
+            grid-template-columns: repeat(3, 80px);
+            grid-template-rows: repeat(3, 80px);
+            gap: 5px;
             justify-content: center;
-            margin: 20px auto;
+            margin: 15px auto;
         }
 
         .puzzle-tile {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, #0284c7, #4f46e5);
             color: white;
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            padding: 5px;
-            border-radius: 10px;
+            padding: 4px;
+            border-radius: 8px;
             cursor: pointer;
             user-select: none;
-            border: 1px solid #60a5fa;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
             transition: 0.15s;
         }
-        .puzzle-tile:hover { filter: brightness(1.1); }
+        .puzzle-tile:hover { filter: brightness(1.15); }
 
         .puzzle-tile.empty {
-            background: var(--bg-color);
+            background: rgba(3, 7, 18, 0.3);
             border: 1px dashed var(--card-border);
             cursor: default;
             box-shadow: none;
@@ -398,24 +411,24 @@
         footer {
             margin-top: auto;
             text-align: center;
-            padding: 30px;
+            padding: 25px;
             color: var(--text-muted);
-            font-size: 0.85rem;
+            font-size: 0.82rem;
             border-top: 1px solid var(--card-border);
-            background: #060913;
+            background: #020617;
         }
     </style>
 </head>
 <body>
 
-    <!-- Éléments graphiques roquettes/fusées sur les bords -->
-    <div class="side-decor left"></div>
-    <div class="side-decor right"></div>
+    <!-- Éléments graphiques aéro/spatiaux sur les côtés -->
+    <div class="aero-decor left"></div>
+    <div class="aero-decor right"></div>
 
     <div class="wrapper">
         <div class="hero">
             <div class="profile-container">
-                <img src="photo.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Zulal+Senel&background=06b6d4&color=fff&size=200'" alt="Zulal Senel" class="profile-pic">
+                <img src="photo.jpg" onerror="this.src='https://ui-avatars.com/api/?name=Zulal+Senel&background=38bdf8&color=030712&size=200'" alt="Zulal Senel" class="profile-pic">
             </div>
             <h1>Zulal Senel</h1>
             <p class="subtitle">Étudiante ingénieure en Génie Mécanique • Recherche de stage (10/05/27 au 02/07/27) & d'alternance (2027-2028)</p>
@@ -555,7 +568,6 @@
                                     <li>Français (natif).</li>
                                     <li>Anglais : Classe européenne (cours de physique-chimie et histoire-géo en anglais) + niveau B2 certifié par l'Université de Cambridge.</li>
                                     <li>Espagnol : Niveau B1 certifié par le Lycée René Char.</li>
-                                    <li>Option Latin et grec antique choisie au collège pendant 3 ans.</li>
                                 </ul>
                             </li>
                         </ul>
@@ -573,7 +585,7 @@
                     </div>
                     <div class="timeline-details">
                         <ul>
-                            <li>Brevet des collèges obtenu avec Mention Très Bien.</li>
+                            <li>Brevet des collèges obtenu avec Mention Très Bien (Option Latin et Grec antique suivie pendant 3 ans).</li>
                             <li>Stage de 3ème (2021) : Immersion professionnelle chez Chausséa.</li>
                             <li>Médiation (5ème) : Rôle de médiatrice pour faire dialoguer les élèves et résoudre leurs conflits.</li>
                             <li>Action Solidaire (3ème) : Participation aux récoltes de la Banque Alimentaire et création de fiches de sensibilisation distribuées en classe et au collège.</li>
@@ -589,7 +601,7 @@
                 <!-- Quiz Scientifique 10 questions -->
                 <div class="game-card">
                     <h3>🧠 Grand Quiz Scientifique & Ingénierie (10 Questions)</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">Testez vos connaissances et tentez d'inscrire votre score au classement général !</p>
+                    <p style="color: var(--text-muted); font-size: 0.88rem;">Testez vos connaissances et tentez d'inscrire votre score au classement général !</p>
                     
                     <div id="quiz-container"></div>
 
@@ -607,9 +619,9 @@
                 <!-- Puzzle Technique -->
                 <div class="game-card" style="text-align: center;">
                     <h3>🧩 Puzzle Technique Aérospatial</h3>
-                    <p style="color: var(--text-muted); font-size: 0.9rem;">Reconstituez le puzzle thématique en faisant glisser les blocs adjacents vers la case vide !</p>
+                    <p style="color: var(--text-muted); font-size: 0.88rem;">Reconstituez le puzzle thématique en faisant glisser les blocs adjacents vers la case vide !</p>
                     <div class="puzzle-board" id="puzzle-board"></div>
-                    <p id="puzzle-status" style="color: var(--secondary); font-weight: 600; min-height: 24px;"></p>
+                    <p id="puzzle-status" style="color: var(--primary); font-weight: 600; min-height: 22px; font-size: 0.9rem;"></p>
                     <button class="btn-action" onclick="initPuzzle()">Mélanger le puzzle</button>
                 </div>
             </div>
@@ -618,12 +630,9 @@
         <!-- ONGLET 3 : CONTACT -->
         <div id="contact" class="tab-content">
             <div class="contact-card">
-                <h2 style="margin-top:0; color: var(--secondary);">Informations de Contact</h2>
+                <h2 style="margin-top:0; color: var(--primary);">Informations de Contact</h2>
                 <p style="color: var(--text-muted);">Ouverte aux opportunités de stage et d'alternance.</p>
                 
-                <div class="contact-item">
-                    📞 Téléphone : <a href="tel:0666987545">06 66 98 75 45</a>
-                </div>
                 <div class="contact-item">
                     ✉️ Email : <a href="mailto:senelzulal@icloud.com">senelzulal@icloud.com</a>
                 </div>
@@ -671,19 +680,19 @@
             const container = document.getElementById('quiz-container');
             if (currentQ < questions.length) {
                 const q = questions[currentQ];
-                let html = `<p style="font-weight:600; margin-top:15px;">${q.q}</p>`;
+                let html = `<p style="font-weight:600; margin-top:12px; font-size:0.95rem;">${q.q}</p>`;
                 q.options.forEach((opt, index) => {
                     html += `<button class="quiz-option" onclick="answerQuiz(${index})">${opt}</button>`;
                 });
-                html += `<p style="font-size:0.85rem; color:var(--text-muted); margin-top:15px;">Question ${currentQ + 1} / ${questions.length} | Score : ${score}</p>`;
+                html += `<p style="font-size:0.82rem; color:var(--text-muted); margin-top:12px;">Question ${currentQ + 1} / ${questions.length} | Score : ${score}</p>`;
                 container.innerHTML = html;
             } else {
                 container.innerHTML = `
-                    <div style="padding:20px; background:var(--bg-color); border-radius:12px; text-align:center; border:1px solid var(--card-border);">
+                    <div style="padding:18px; background:rgba(3, 7, 18, 0.7); border-radius:10px; text-align:center; border:1px solid var(--card-border);">
                         <h4 style="color:#34d399; margin-top:0;">🎉 Quiz terminé ! Score : ${score} / ${questions.length}</h4>
-                        <input type="text" id="player-name" placeholder="Votre prénom / pseudo" style="padding:10px; border-radius:8px; border:1px solid var(--card-border); background:var(--card-bg); color:white; width:80%; max-width:250px; margin-bottom:10px;"><br>
+                        <input type="text" id="player-name" placeholder="Votre prénom / pseudo" style="padding:9px; border-radius:8px; border:1px solid var(--card-border); background:rgba(15, 23, 42, 0.8); color:white; width:80%; max-width:230px; margin-bottom:10px;"><br>
                         <button class="btn-action" onclick="saveScore()">Enregistrer mon score</button><br>
-                        <button class="btn-action" style="background:#334155; margin-top:8px;" onclick="restartQuiz()">Rejouer</button>
+                        <button class="btn-action" style="background:#334155; color:white; margin-top:8px;" onclick="restartQuiz()">Rejouer</button>
                     </div>
                 `;
             }
